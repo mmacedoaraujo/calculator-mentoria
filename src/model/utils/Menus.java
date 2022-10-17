@@ -1,6 +1,7 @@
 package model.utils;
 
 import model.calculators.AreaCalculator;
+import model.calculators.BMICalculator;
 import model.calculators.RegularCalculator;
 import model.entities.Circle;
 import model.entities.Rectangle;
@@ -105,8 +106,43 @@ public class Menus {
     }
 
     public void BMICalculatorMenu() {
-        System.out.println("Calculadora IMC");
+        BMICalculator bmiCalculator = new BMICalculator();
+        Double result = 0.0;
+        String answer = "";
+        System.out.println("Você escolheu: Calculadora IMC");
+        System.out.print("Deseja continuar[y/n]? ");
+        answer = input.nextLine();
+        answer = utils.whileValidatorExclamationOption("^[y]{1}|^[n]{1}", answer);
+        System.out.println();
+        if (answer.toLowerCase().contains("y")) {
+
+            System.out.print("Digite o valor do peso: ");
+            Double firstNumber = input.nextDouble();
+            System.out.print("Digite o valor da altura: ");
+            Double secondNumber = input.nextDouble();
+            result = bmiCalculator.calculateBMI(firstNumber, secondNumber);
+
+
+            System.out.println("Resultado: " + result);
+            System.out.println();
+            System.out.print("1. Voltar para Calculadora Básica ou 2. Voltar para o menu principal? ");
+            input.nextLine();
+            System.out.println();
+            String finalOperationAnswer = input.nextLine();
+            utils.whileValidator("[0]|[3-9]+|[\\d]{2,}|[A-Za-z]|[\\s]", finalOperationAnswer);
+
+            if (finalOperationAnswer.contains("1")) {
+                regularCalculatorMenu();
+            }
+            if (finalOperationAnswer.contains("2")) {
+                mainMenu();
+            }
+
+        } else {
+            mainMenu();
+        }
     }
+
 
     public void AreaCalculatorMenu() {
         AreaCalculator areaCalculator = new AreaCalculator();
@@ -139,7 +175,7 @@ public class Menus {
                 System.out.print("Digite o valor do raio: ");
                 Double firstNumber = input.nextDouble();
                 Circle circle = new Circle(firstNumber);
-                result = areaCalculator.calculateCircleArea(circle.getRadius());
+                result = areaCalculator.calculateCircleArea(circle);
 
             }
             if (answer.contains("2")) {
@@ -149,7 +185,7 @@ public class Menus {
                 System.out.print("Digite o valor do lado do quadrado: ");
                 Double firstNumber = input.nextDouble();
                 Square square = new Square(firstNumber);
-                result = areaCalculator.calculateSquareArea(square.getSquareSide());
+                result = areaCalculator.calculateSquareArea(square);
             }
             if (answer.contains("3")) {
                 result = 0.0;
@@ -160,7 +196,7 @@ public class Menus {
                 System.out.print("Digite o valor da largura: ");
                 Double secondNumber = input.nextDouble();
                 Rectangle rectangle = new Rectangle(firstNumber, secondNumber);
-                result = areaCalculator.calculateRectangleArea(rectangle.getHeight(), rectangle.getWidth());
+                result = areaCalculator.calculateRectangleArea(rectangle);
             }
             if (answer.contains("4")) {
                 answer = "";
@@ -186,7 +222,6 @@ public class Menus {
             mainMenu();
         }
         System.out.println();
-        ;
     }
 
     public Double regularCalculatorOperationConstructorMethod(String operation, String answer) {

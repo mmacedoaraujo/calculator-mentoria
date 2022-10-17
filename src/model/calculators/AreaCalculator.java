@@ -6,20 +6,16 @@ import model.entities.Square;
 
 public class AreaCalculator {
 
-    private Circle circle;
-    private Rectangle rectangle;
-    private Square square;
 
-
-    public Double calculateSquareArea(Double squareSide) {
-        return Math.pow(squareSide, 2);
+    public Double calculateSquareArea(Square square) {
+        return Math.pow(square.getSquareSide(), 2);
     }
 
-    public Double calculateCircleArea(double firstNumber) {
-        return Math.PI * (Math.pow(firstNumber, 2));
+    public Double calculateCircleArea(Circle circle) {
+        return Math.PI * (Math.pow(circle.getRadius(), 2));
     }
 
-    public Double calculateRectangleArea(Double height, Double width) {
-        return height * width;
+    public Double calculateRectangleArea(Rectangle rectangle) {
+        return rectangle.getHeight() * rectangle.getWidth();
     }
 }
