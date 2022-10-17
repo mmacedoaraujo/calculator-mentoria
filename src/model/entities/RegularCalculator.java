@@ -29,10 +29,15 @@ public class RegularCalculator {
         this.secondNumber = secondNumber;
     }
 
-    public Double sum(Double firstNumber, Double secondNumber) {
-        return firstNumber + secondNumber;
+    public Double sum() {
+        double result = this.firstNumber + this.secondNumber;
+        return result;
     }
 
+
+    public Double subtraction() {
+        return this.firstNumber - this.secondNumber;
+    }
     @Override
     public String toString() {
         return "RegularCalculator{" +

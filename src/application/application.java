@@ -1,9 +1,6 @@
 package application;
 
 import model.entities.Menus;
-import utils.Utils;
-
-import java.util.Scanner;
 
 public class application {
 
@@ -11,10 +8,6 @@ public class application {
         Menus menus = new Menus();
 
         menus.mainMenu();
-
-
-
-
 
 
     }
