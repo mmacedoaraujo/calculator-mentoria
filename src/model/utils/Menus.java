@@ -1,6 +1,10 @@
 package model.utils;
 
+import model.calculators.AreaCalculator;
 import model.calculators.RegularCalculator;
+import model.entities.Circle;
+import model.entities.Rectangle;
+import model.entities.Square;
 
 import java.util.Scanner;
 
@@ -105,6 +109,7 @@ public class Menus {
     }
 
     public void AreaCalculatorMenu() {
+        AreaCalculator areaCalculator = new AreaCalculator();
         Double result = 0.0;
         String answer = "";
         System.out.println("Você escolheu: Calculadora de Área");
@@ -128,13 +133,34 @@ public class Menus {
             System.out.println();
 
             if (answer.contains("1")) {
-                result = regularCalculatorOperationConstructorMethod("Soma", "1");
+                result = 0.0;
+                System.out.printf("Você escolheu calcular a Área do círculo:");
+                System.out.println();
+                System.out.print("Digite o valor do raio: ");
+                Double firstNumber = input.nextDouble();
+                Circle circle = new Circle(firstNumber);
+                result = areaCalculator.calculateCircleArea(circle.getRadius());
+
             }
             if (answer.contains("2")) {
-                result = regularCalculatorOperationConstructorMethod("Subtração", "2");
+                result = 0.0;
+                System.out.printf("Você escolheu calcular a Área do Quadrado:");
+                System.out.println();
+                System.out.print("Digite o valor do lado do quadrado: ");
+                Double firstNumber = input.nextDouble();
+                Square square = new Square(firstNumber);
+                result = areaCalculator.calculateSquareArea(square.getSquareSide());
             }
             if (answer.contains("3")) {
-                result = regularCalculatorOperationConstructorMethod("Divisão", "3");
+                result = 0.0;
+                System.out.printf("Você escolheu calcular a Área do Retângulo:");
+                System.out.println();
+                System.out.print("Digite o valor da altura: ");
+                Double firstNumber = input.nextDouble();
+                System.out.print("Digite o valor da largura: ");
+                Double secondNumber = input.nextDouble();
+                Rectangle rectangle = new Rectangle(firstNumber, secondNumber);
+                result = areaCalculator.calculateRectangleArea(rectangle.getHeight(), rectangle.getWidth());
             }
             if (answer.contains("4")) {
                 answer = "";
@@ -143,14 +169,14 @@ public class Menus {
 
             System.out.println("Resultado: " + result);
             System.out.println();
-            System.out.print("1. Voltar para Calculadora Básica ou 2. Voltar para o menu principal? ");
+            System.out.print("1. Voltar para Calculadora de Área ou 2. Voltar para o menu principal? ");
             input.nextLine();
             System.out.println();
             String finalOperationAnswer = input.nextLine();
             utils.whileValidator("[0]|[3-9]+|[\\d]{2,}|[A-Za-z]|[\\s]", finalOperationAnswer);
 
             if (finalOperationAnswer.contains("1")) {
-                regularCalculatorMenu();
+                AreaCalculatorMenu();
             }
             if (finalOperationAnswer.contains("2")) {
                 mainMenu();
@@ -164,37 +190,6 @@ public class Menus {
     }
 
     public Double regularCalculatorOperationConstructorMethod(String operation, String answer) {
-        Double result = 0.0;
-        System.out.printf("Você escolheu a operação: %s", operation);
-        System.out.println();
-        System.out.print("Digite o primeiro valor: ");
-        double firstNumber = input.nextDouble();
-
-        System.out.print("Digite o segundo valor: ");
-        double secondNumber = input.nextDouble();
-
-        RegularCalculator regularCalculator = new RegularCalculator(firstNumber, secondNumber);
-        switch (answer) {
-            case "1":
-                result = regularCalculator.sum();
-                break;
-            case "2":
-                result = regularCalculator.subtraction();
-                break;
-            case "3":
-                result = regularCalculator.division();
-                break;
-            case "4":
-                result = regularCalculator.multiply();
-                break;
-            case "5":
-                result = regularCalculator.power();
-                break;
-        }
-        return result;
-    }
-
-    public Double areaCalculatorOperationConstructorMethod(String operation, String answer) {
         Double result = 0.0;
         System.out.printf("Você escolheu a operação: %s", operation);
         System.out.println();
