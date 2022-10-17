@@ -1,6 +1,4 @@
-package utils;
-
-import model.entities.Menus;
+package model.utils;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

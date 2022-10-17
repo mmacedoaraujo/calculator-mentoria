@@ -1,6 +1,6 @@
 package application;
 
-import model.entities.Menus;
+import model.utils.Menus;
 
 public class application {
 
