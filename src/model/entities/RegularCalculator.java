@@ -45,4 +45,17 @@ public class RegularCalculator {
                 ", secondNumber=" + secondNumber +
                 '}';
     }
+
+    public Double division() {
+        return this.firstNumber / this.secondNumber;
+    }
+
+    public Double multiply() {
+        return this.firstNumber * this.secondNumber;
+    }
+
+    public Double power() {
+        double pow = Math.pow(this.firstNumber, this.secondNumber);
+        return pow;
+    }
 }
