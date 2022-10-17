@@ -19,10 +19,6 @@ public class Circle {
         this.radius = radius;
     }
 
-    public Double calculateCircleArea() {
-        return Math.PI * (Math.pow(radius, 2));
-    }
-
     @Override
     public String toString() {
         return "Circle{" +
