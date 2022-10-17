@@ -237,19 +237,19 @@ public class Menus {
         RegularCalculator regularCalculator = new RegularCalculator(firstNumber, secondNumber);
         switch (answer) {
             case "1":
-                result = regularCalculator.sum();
+                result = regularCalculator.sum(regularCalculator);
                 break;
             case "2":
-                result = regularCalculator.subtraction();
+                result = regularCalculator.subtraction(regularCalculator);
                 break;
             case "3":
-                result = regularCalculator.division();
+                result = regularCalculator.division(regularCalculator);
                 break;
             case "4":
-                result = regularCalculator.multiply();
+                result = regularCalculator.multiply(regularCalculator);
                 break;
             case "5":
-                result = regularCalculator.power();
+                result = regularCalculator.power(regularCalculator);
                 break;
         }
         return result;

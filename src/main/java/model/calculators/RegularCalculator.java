@@ -29,14 +29,14 @@ public class RegularCalculator {
         this.secondNumber = secondNumber;
     }
 
-    public Double sum() {
-        double result = this.firstNumber + this.secondNumber;
+    public Double sum(RegularCalculator regularCalculator) {
+        double result = regularCalculator.firstNumber + regularCalculator.secondNumber;
         return result;
     }
 
 
-    public Double subtraction() {
-        return this.firstNumber - this.secondNumber;
+    public Double subtraction(RegularCalculator regularCalculator) {
+        return regularCalculator.getFirstNumber() - regularCalculator.getSecondNumber();
     }
     @Override
     public String toString() {
@@ -46,16 +46,16 @@ public class RegularCalculator {
                 '}';
     }
 
-    public Double division() {
-        return this.firstNumber / this.secondNumber;
+    public Double division(RegularCalculator regularCalculator) {
+        return regularCalculator.getFirstNumber() / regularCalculator.getSecondNumber();
     }
 
-    public Double multiply() {
-        return this.firstNumber * this.secondNumber;
+    public Double multiply(RegularCalculator regularCalculator) {
+        return regularCalculator.getFirstNumber() * regularCalculator.getSecondNumber();
     }
 
-    public Double power() {
-        double pow = Math.pow(this.firstNumber, this.secondNumber);
+    public Double power(RegularCalculator regularCalculator) {
+        double pow = Math.pow(regularCalculator.getFirstNumber(), regularCalculator.getSecondNumber());
         return pow;
     }
 }
