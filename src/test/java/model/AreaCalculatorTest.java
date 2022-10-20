@@ -1,4 +1,4 @@
-package model.calculators;
+package model;
 
 import model.entities.Circle;
 import model.entities.Rectangle;
