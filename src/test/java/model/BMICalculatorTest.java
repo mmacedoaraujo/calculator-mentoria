@@ -11,7 +11,7 @@ class BMICalculatorTest {
     @Test
     void calculateBMI() {
         Locale.setDefault(Locale.US);
-        BMICalculator bmiCalculator = new BMICalculator();
+        IMCCalculator bmiCalculator = new IMCCalculator();
         Assertions.assertEquals("23.1", String.format("%.1f", bmiCalculator.calculateBMI(70.0, 1.74)));
     }
 }
