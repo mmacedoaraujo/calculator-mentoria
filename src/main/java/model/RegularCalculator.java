@@ -27,9 +27,9 @@ public class RegularCalculator implements Calculator {
 
     public Double[] readValues() {
         Double[] values = new Double[2];
-        System.out.println("Please insert the first value: ");
+        System.out.println("Insira o primeiro valor: ");
         values[0] = readValue();
-        System.out.println("Now insert the second value: ");
+        System.out.println("Insira o segundo valor: ");
         values[1] = readValue();
         return values;
     }
