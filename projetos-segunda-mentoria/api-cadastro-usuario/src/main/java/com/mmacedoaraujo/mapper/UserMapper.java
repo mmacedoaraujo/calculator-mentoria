@@ -7,6 +7,8 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper {
 
@@ -14,5 +16,7 @@ public interface UserMapper {
 
     void update(@MappingTarget User user, UserDTO userDTO);
     User toEntity(UserDTO userDTO);
+
+    List<UserDTO> toDTOList(List<User> userList);
 
 }

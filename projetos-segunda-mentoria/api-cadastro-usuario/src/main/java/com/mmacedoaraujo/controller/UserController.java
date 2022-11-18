@@ -34,6 +34,13 @@ public class UserController {
         return new ResponseEntity<>(userFound, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/find")
+    public ResponseEntity<List<UserDTO>> returnUserByName(@RequestParam String name) {
+        List<User> listOfUsersFoundByName = userService.findByName(name);
+        List<UserDTO> userDTOList = UserMapper.INSTANCE.toDTOList(listOfUsersFoundByName);
+        return new ResponseEntity<>(userDTOList, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<User> registerNewUser(@RequestBody User user) {
         User userSaved = userService.save(user);
