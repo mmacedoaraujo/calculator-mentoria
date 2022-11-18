@@ -1,0 +1,23 @@
+
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+n	java:S135!"YReduce the total number of break and continue statements in this loop to use at most one.(Ê„êú
+l	java:S127("XRefactor the code in order to not assign to this loop counter from within the loop body.(¨…ÄK
+N	java:S106"9Replace this use of System.out or System.err by a logger.(·¦…¤
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(ë—À¶ùÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ŒŠÊ”
+t
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÈÕâ¢ıÿÿÿÿ
+S	java:S106$"9Replace this use of System.out or System.err by a logger.(¨®Ë•úÿÿÿÿ
+N	java:S106'"9Replace this use of System.out or System.err by a logger.(²†—š
+S	java:S106/"9Replace this use of System.out or System.err by a logger.(³†ñàÿÿÿÿÿ
+N	java:S1062"9Replace this use of System.out or System.err by a logger.(‚ Ğ
+M	java:S1065"9Replace this use of System.out or System.err by a logger.(¤»àa
+S	java:S1068"9Replace this use of System.out or System.err by a logger.(°¢Ôïüÿÿÿÿ
+S	java:S106>"9Replace this use of System.out or System.err by a logger.(§Çı¨üÿÿÿÿ
+S	java:S106B"9Replace this use of System.out or System.err by a logger.(–šçÍüÿÿÿÿ
+S	java:S106F"9Replace this use of System.out or System.err by a logger.(ºéÁ±ùÿÿÿÿ
+N	java:S106H"9Replace this use of System.out or System.err by a logger.(°Ê¦ó
+R
+java:S1128"7Remove this unused import 'javax.sound.midi.Soundbank'.(µÊøÿÿÿÿ
