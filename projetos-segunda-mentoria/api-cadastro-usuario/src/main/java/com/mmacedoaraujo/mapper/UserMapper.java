@@ -16,7 +16,6 @@ public interface UserMapper {
 
     void update(@MappingTarget User user, UserDTO userDTO);
     User toEntity(UserDTO userDTO);
-
     List<UserDTO> toDTOList(List<User> userList);
 
 }
