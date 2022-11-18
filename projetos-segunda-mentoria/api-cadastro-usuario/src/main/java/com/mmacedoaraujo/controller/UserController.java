@@ -1,5 +1,10 @@
 package com.mmacedoaraujo.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.fge.jsonpatch.JsonPatch;
+import com.github.fge.jsonpatch.JsonPatchException;
 import com.mmacedoaraujo.domain.User;
 import com.mmacedoaraujo.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +38,20 @@ public class UserController {
 
         return new ResponseEntity<>(userSaved, HttpStatus.CREATED);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<User> partialUpdate(@PathVariable Long id, @RequestBody JsonPatch patch) {
+        try {
+            User userFound = userService.getUserByIdOrThrowException(id);
+            User userPatched = userService.applyPatchToCustomer(patch, userFound);
+            User updatedUser = userService.save(userPatched);
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {

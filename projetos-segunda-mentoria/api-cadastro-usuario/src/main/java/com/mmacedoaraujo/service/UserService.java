@@ -1,6 +1,12 @@
 package com.mmacedoaraujo.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.fge.jsonpatch.JsonPatch;
+import com.github.fge.jsonpatch.JsonPatchException;
 import com.mmacedoaraujo.domain.User;
+import com.mmacedoaraujo.mapper.UserMapper;
 import com.mmacedoaraujo.repository.UserRepository;
 import com.mmacedoaraujo.service.exceptions.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +19,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
+    ObjectMapper objectMapper = new ObjectMapper();
     private final UserRepository userRepository;
 
     public List<User> getAllUsers() {
@@ -32,4 +39,17 @@ public class UserService {
         getUserByIdOrThrowException(id);
         userRepository.deleteById(id);
     }
+
+    public User applyPatchToCustomer(JsonPatch patch, User targetUser) {
+        try {
+            JsonNode patchedUser = patch.apply(objectMapper.convertValue(targetUser, JsonNode.class));
+            return objectMapper.treeToValue(patchedUser, User.class);
+        } catch (JsonPatchException e) {
+            throw new RuntimeException(e);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

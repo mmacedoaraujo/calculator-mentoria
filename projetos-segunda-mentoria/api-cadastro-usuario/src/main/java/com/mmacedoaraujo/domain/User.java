@@ -14,6 +14,7 @@ import java.util.Objects;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User implements Serializable {
 
     private static final long serialVersionUID = 7096417548700828393L;
