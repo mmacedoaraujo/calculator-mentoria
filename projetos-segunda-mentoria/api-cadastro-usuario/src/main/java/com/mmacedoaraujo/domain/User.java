@@ -3,6 +3,7 @@ package com.mmacedoaraujo.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -13,8 +14,9 @@ import java.util.Objects;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
 
+    private static final long serialVersionUID = 7096417548700828393L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
