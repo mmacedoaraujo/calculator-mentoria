@@ -19,12 +19,17 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) {
+    public User getUserByIdOrThrowException(Long id) {
         Optional<User> byId = userRepository.findById(id);
         return byId.orElseThrow(() -> new UserNotFoundException("Usuário não encontrado " + id));
     }
 
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    public void deleteUserById(Long id) {
+        getUserByIdOrThrowException(id);
+        userRepository.deleteById(id);
     }
 }
