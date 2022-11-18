@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.mmacedoaraujo.domain.User;
+import com.mmacedoaraujo.dto.UserDTO;
+import com.mmacedoaraujo.mapper.UserMapper;
 import com.mmacedoaraujo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -40,11 +42,11 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<User> partialUpdate(@PathVariable Long id, @RequestBody JsonPatch patch) {
+    public ResponseEntity<User> partialUpdate(@PathVariable Long id, @RequestBody UserDTO userDTO) {
         try {
             User userFound = userService.getUserByIdOrThrowException(id);
-            User userPatched = userService.applyPatchToCustomer(patch, userFound);
-            User updatedUser = userService.save(userPatched);
+            UserMapper.INSTANCE.update(userFound, userDTO);
+            User updatedUser = userService.save(userFound);
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -40,16 +40,4 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User applyPatchToCustomer(JsonPatch patch, User targetUser) {
-        try {
-            JsonNode patchedUser = patch.apply(objectMapper.convertValue(targetUser, JsonNode.class));
-            return objectMapper.treeToValue(patchedUser, User.class);
-        } catch (JsonPatchException e) {
-            throw new RuntimeException(e);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
 }
